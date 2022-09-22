@@ -5,6 +5,7 @@ export const getRepoData = async (repoName: string) => {
         const response = await axios.get(`https://api.github.com/repos/${repoName}`, {
             headers: {
                 Accept: "application/vnd.github.v3+json",
+                Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
             },
         })
         const data = response.data
@@ -16,6 +17,7 @@ export const getRepoData = async (repoName: string) => {
         const pulls_response = await axios.get(`https://api.github.com/search/issues?q=repo:${repoName}%20is:pr%20is:open&per_page=1`, {
             headers: {
                 Accept: "application/vnd.github.v3+json",
+                Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
             },
         })
         const pulls_data = pulls_response.data
@@ -24,6 +26,7 @@ export const getRepoData = async (repoName: string) => {
         const issues_response = await axios.get(`https://api.github.com/search/issues?q=repo:${repoName}%20is:issue%20is:open&per_page=1`, {
             headers: {
                 Accept: "application/vnd.github.v3+json",
+                Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
             },
         })
         const issues_data = issues_response.data

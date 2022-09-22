@@ -1,5 +1,8 @@
 import supertest from 'supertest';
 import app from './app';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 
 describe('GET /popularity', () => {
