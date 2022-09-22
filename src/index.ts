@@ -10,7 +10,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/popularity', async (req: Request, res: Response) => {
-    console.log(req.query)
     const { repoName } = req.query;
     if (!repoName || typeof repoName !== 'string') {
         res.status(400).send('repoName is required');
